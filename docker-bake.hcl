@@ -1,5 +1,7 @@
 group "default" {
     targets = [
+        "4_14_0_debian",
+        "4_14_0_debian_nonroot",
         "4_14_0_ubuntu",
         "4_14_0_ubuntu_nonroot"
     ]
