@@ -1,0 +1,15 @@
+{
+	"image": "mcr.microsoft.com/vscode/devcontainers/base:0-jammy",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"HashiCorp.HCL"
+			]
+		}
+	},
+	"remoteUser": "vscode",
+	"features": {
+		"docker-from-docker": "latest"
+	}
+}
