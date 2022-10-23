@@ -12,6 +12,7 @@ RUN apt-get update \
         locales \
         m4 \
         opam \
+        ssh-client \
         sudo \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/list/*
 
