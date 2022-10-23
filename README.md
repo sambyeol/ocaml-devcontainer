@@ -9,9 +9,9 @@ Make a devcontainer setting file at `.devcontainer/devcontainer.json` in your pr
     "image": "sambyeol/ocaml-devcontainer:nonroot",
     "customizations": {
         "vscode": {
-            "extensions": {
+            "extensions": [
                 "ocamllabs.ocaml-platform"
-            }
+            ]
         }
     }
 }
