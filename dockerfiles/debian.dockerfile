@@ -9,10 +9,17 @@ RUN apt-get update \
         curl \
         git \
         gpg \
+        locales \
         m4 \
         opam \
         sudo \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/list/*
+
+ARG LOCALE=en_US.UTF-8
+RUN export FORMAT=$(echo ${LOCALE} | cut -f2 -d.) \
+    && export INPUT=$(echo ${LOCALE} | cut -f1 -d.) \
+    && localedef -f ${FORMAT} -i ${INPUT} ${LOCALE}
+ENV LC_ALL ${LOCALE}
 
 ARG USERNAME=sambyeol
 ARG USE_OMB=true

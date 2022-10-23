@@ -9,10 +9,15 @@ RUN apt-get update \
         curl \
         git \
         gpg \
+        locales \
         m4 \
         opam \
         sudo \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/list/*
+
+ARG LOCALE=en_US.UTF-8
+RUN locale-gen ${LOCALE}
+ENV LC_ALL ${LOCALE}
 
 ARG USERNAME=sambyeol
 ARG USE_OMB=true
