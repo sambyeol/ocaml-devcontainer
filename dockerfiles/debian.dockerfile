@@ -14,7 +14,7 @@ RUN apt-get update \
         sudo \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/list/*
 
-ARG USERNAME=root
+ARG USERNAME=sambyeol
 ARG USE_OMB=true
 COPY script-library/debian-*.sh /tmp/script-library/
 RUN /tmp/script-library/debian-create-user.sh ${USERNAME} \

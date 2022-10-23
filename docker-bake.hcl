@@ -1,9 +1,9 @@
 group "default" {
     targets = [
         "4_14_0_debian",
-        "4_14_0_debian_nonroot",
+        "4_14_0_debian_root",
         "4_14_0_ubuntu",
-        "4_14_0_ubuntu_nonroot"
+        "4_14_0_ubuntu_root"
     ]
 }
 
@@ -14,9 +14,9 @@ target "cross_platform" {
     ]
 }
 
-target "nonroot" {
+target "root" {
     args = {
-        USERNAME = "sambyeol"
+        USERNAME = "root"
     }
 }
 
@@ -38,13 +38,13 @@ target "4_14_0_debian" {
     ]
 }
 
-target "4_14_0_debian_nonroot" {
-    inherits = ["cross_platform", "debian", "nonroot"]
+target "4_14_0_debian_root" {
+    inherits = ["cross_platform", "debian", "root"]
     tags = [
-        "sambyeol/ocaml-devcontainer:4.14.0-debian-nonroot",
-        "sambyeol/ocaml-devcontainer:4.14.0-nonroot",
-        "sambyeol/ocaml-devcontainer:latest-debian-nonroot",
-        "sambyeol/ocaml-devcontainer:latest-nonroot"
+        "sambyeol/ocaml-devcontainer:4.14.0-debian-root",
+        "sambyeol/ocaml-devcontainer:4.14.0-root",
+        "sambyeol/ocaml-devcontainer:latest-debian-root",
+        "sambyeol/ocaml-devcontainer:latest-root"
     ]
 }
 
@@ -56,10 +56,10 @@ target "4_14_0_ubuntu" {
     ]
 }
 
-target "4_14_0_ubuntu_nonroot" {
-    inherits = ["cross_platform", "ubuntu", "nonroot"]
+target "4_14_0_ubuntu_root" {
+    inherits = ["cross_platform", "ubuntu", "root"]
     tags = [
-        "sambyeol/ocaml-devcontainer:4.14.0-ubuntu-nonroot",
-        "sambyeol/ocaml-devcontainer:4.14.0-nonroot"
+        "sambyeol/ocaml-devcontainer:4.14.0-ubuntu-root",
+        "sambyeol/ocaml-devcontainer:4.14.0-root"
     ]
 }

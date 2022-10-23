@@ -6,7 +6,7 @@ You can find the images in [Docker Hub](https://hub.docker.com/r/sambyeol/ocaml-
 Make a devcontainer setting file at `.devcontainer/devcontainer.json` in your project.
 ```json
 {
-    "image": "sambyeol/ocaml-devcontainer:nonroot",
+    "image": "sambyeol/ocaml-devcontainer",
     "customizations": {
         "vscode": {
             "extensions": [
