@@ -29,4 +29,7 @@ RUN /tmp/script-library/debian-create-user.sh ${USERNAME} \
 USER ${USERNAME}
 RUN opam init --disable-sandbox --yes --compiler=${OCAML_VERSION} && echo "eval \$(opam config env)" >> ~/.bashrc
 
-RUN opam install --yes ocaml-lsp-server
+RUN opam install --yes \
+        ocaml-lsp-server \
+        ocamlformat \
+        ocamlformat-rpc
