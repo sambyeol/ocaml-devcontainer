@@ -33,6 +33,7 @@ USER ${USERNAME}
 RUN opam init --disable-sandbox --yes --compiler=${OCAML_VERSION} && echo "eval \$(opam config env)" >> ~/.bashrc
 
 RUN opam install --yes \
+        dune \
         ocaml-lsp-server \
         ocamlformat \
         ocamlformat-rpc
