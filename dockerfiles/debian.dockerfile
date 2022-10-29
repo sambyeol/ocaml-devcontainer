@@ -32,7 +32,7 @@ RUN /tmp/script-library/debian-create-user.sh ${USERNAME} \
 
 USER ${USERNAME}
 ARG OCAML_VERSION=
-RUN opam init --disable-sandbox --yes --compiler=${OCAML_VERSION} && echo "eval \$(opam config env)" >> ~/.bashrc
+RUN opam init --disable-sandbox --yes --compiler=${OCAML_VERSION} && echo "eval \$(opam config env)" >> ~/.zshrc
 
 RUN opam install --yes \
         dune \
