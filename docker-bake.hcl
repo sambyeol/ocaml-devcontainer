@@ -20,6 +20,12 @@ target "root" {
     }
 }
 
+target "4_14_0" {
+    args = {
+        OCAML_VERSION = "4.14.0"
+    }
+}
+
 target "debian" {
     dockerfile = "./dockerfiles/debian.dockerfile"
 }
@@ -29,7 +35,7 @@ target "ubuntu" {
 }
 
 target "4_14_0_debian" {
-    inherits = ["cross_platform", "debian"]
+    inherits = ["4_14_0", "debian", "cross_platform"]
     tags =[
         "sambyeol/ocaml-devcontainer:4.14.0-debian",
         "sambyeol/ocaml-devcontainer:4.14.0",
@@ -39,7 +45,7 @@ target "4_14_0_debian" {
 }
 
 target "4_14_0_debian_root" {
-    inherits = ["cross_platform", "debian", "root"]
+    inherits = ["4_14_0", "debian", "root", "cross_platform"]
     tags = [
         "sambyeol/ocaml-devcontainer:4.14.0-debian-root",
         "sambyeol/ocaml-devcontainer:4.14.0-root",
@@ -49,7 +55,7 @@ target "4_14_0_debian_root" {
 }
 
 target "4_14_0_ubuntu" {
-    inherits = ["cross_platform", "ubuntu"]
+    inherits = ["4_14_0", "ubuntu", "cross_platform"]
     tags =[
         "sambyeol/ocaml-devcontainer:4.14.0-ubuntu",
         "sambyeol/ocaml-devcontainer:4.14.0"
@@ -57,7 +63,7 @@ target "4_14_0_ubuntu" {
 }
 
 target "4_14_0_ubuntu_root" {
-    inherits = ["cross_platform", "ubuntu", "root"]
+    inherits = ["4_14_0", "ubuntu", "root", "cross_platform"]
     tags = [
         "sambyeol/ocaml-devcontainer:4.14.0-ubuntu-root",
         "sambyeol/ocaml-devcontainer:4.14.0-root"

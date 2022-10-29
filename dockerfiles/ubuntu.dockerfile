@@ -29,6 +29,7 @@ RUN /tmp/script-library/debian-create-user.sh ${USERNAME} \
     && rm -rf /tmp/script-library
 
 USER ${USERNAME}
+ARG OCAML_VERSION=
 RUN opam init --disable-sandbox --yes --compiler=${OCAML_VERSION} && echo "eval \$(opam config env)" >> ~/.bashrc
 
 RUN opam install --yes \
