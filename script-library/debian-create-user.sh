@@ -9,7 +9,7 @@ fi
 
 # create non-root user
 if ! [ "${USERNAME}" = "root" ]; then
-    useradd --shell $(which bash) -G sudo -m -d /home/${USERNAME} -k /etc/skel ${USERNAME}
+    useradd --shell $(which zsh) -G sudo -m -d /home/${USERNAME} -k /etc/skel ${USERNAME}
     sed -i -e 's/%sudo.*/%sudo\tALL=(ALL:ALL)\tNOPASSWD:ALL/g' /etc/sudoers
     su ${USERNAME} -s /bin/sh -c "touch /home/${USERNAME}/.sudo_as_admin_successful"
 fi
