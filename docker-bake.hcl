@@ -1,9 +1,9 @@
 group "default" {
     targets = [
-        "4_14_0_debian",
-        "4_14_0_debian_root",
-        "4_14_0_ubuntu",
-        "4_14_0_ubuntu_root"
+        "5_0_0_debian",
+        "5_0_0_debian_root",
+        "5_0_0_ubuntu",
+        "5_0_0_ubuntu_root"
     ]
 }
 
@@ -20,18 +20,78 @@ target "root" {
     }
 }
 
-target "4_14_0" {
-    args = {
-        OCAML_VERSION = "4.14.0"
-    }
-}
-
 target "debian" {
     dockerfile = "./dockerfiles/debian.dockerfile"
 }
 
 target "ubuntu" {
     dockerfile = "./dockerfiles/ubuntu.dockerfile"
+}
+
+// built at 2022-12-22
+
+target "5_0_0" {
+    args = {
+        OCAML_VERSION = "5.0.0"
+    }
+}
+
+target "5_0_0_debian" {
+    inherits = ["5_0_0", "debian", "cross_platform"]
+    tags =[
+        "sambyeol/ocaml-devcontainer:5.0.0-debian",
+        "sambyeol/ocaml-devcontainer:5.0-debian",
+        "sambyeol/ocaml-devcontainer:5-debian",
+        "sambyeol/ocaml-devcontainer:debian",
+
+        "sambyeol/ocaml-devcontainer:5.0.0",
+        "sambyeol/ocaml-devcontainer:5.0",
+        "sambyeol/ocaml-devcontainer:5",
+        "sambyeol/ocaml-devcontainer:latest",
+    ]
+}
+
+target "5_0_0_debian_root" {
+    inherits = ["5_0_0", "debian", "root", "cross_platform"]
+    tags = [
+        "sambyeol/ocaml-devcontainer:5.0.0-debian-root",
+        "sambyeol/ocaml-devcontainer:5.0-debian-root",
+        "sambyeol/ocaml-devcontainer:5-debian-root",
+        "sambyeol/ocaml-devcontainer:debian-root",
+
+        "sambyeol/ocaml-devcontainer:5.0.0-root",
+        "sambyeol/ocaml-devcontainer:5.0-root",
+        "sambyeol/ocaml-devcontainer:5-root",
+        "sambyeol/ocaml-devcontainer:root",
+    ]
+}
+
+target "5_0_0_ubuntu" {
+    inherits = ["5_0_0", "ubuntu", "cross_platform"]
+    tags =[
+        "sambyeol/ocaml-devcontainer:5.0.0-ubuntu",
+        "sambyeol/ocaml-devcontainer:5.0-ubuntu",
+        "sambyeol/ocaml-devcontainer:5-ubuntu",
+        "sambyeol/ocaml-devcontainer:ubuntu",
+    ]
+}
+
+target "5_0_0_ubuntu_root" {
+    inherits = ["5_0_0", "ubuntu", "root", "cross_platform"]
+    tags = [
+        "sambyeol/ocaml-devcontainer:5.0.0-ubuntu-root",
+        "sambyeol/ocaml-devcontainer:5.0-ubuntu-root",
+        "sambyeol/ocaml-devcontainer:5-ubuntu-root",
+        "sambyeol/ocaml-devcontainer:ubuntu-root",
+    ]
+}
+
+// built at 2022-11-04
+
+target "4_14_0" {
+    args = {
+        OCAML_VERSION = "4.14.0"
+    }
 }
 
 target "4_14_0_debian" {
