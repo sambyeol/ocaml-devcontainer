@@ -3,7 +3,9 @@ group "default" {
         "5_0_0_debian",
         "5_0_0_debian_root",
         "5_0_0_ubuntu",
-        "5_0_0_ubuntu_root"
+        "5_0_0_ubuntu_root",
+        "5_0_0_alpine",
+        "5_0_0_alpine_root"
     ]
 }
 
@@ -28,7 +30,11 @@ target "ubuntu" {
     dockerfile = "./dockerfiles/ubuntu.dockerfile"
 }
 
-// built at 2022-12-22
+target "alpine" {
+    dockerfile = "./dockerfiles/alpine.dockerfile"
+}
+
+// built at 2022-12-23
 
 target "5_0_0" {
     args = {
@@ -83,6 +89,26 @@ target "5_0_0_ubuntu_root" {
         "sambyeol/ocaml-devcontainer:5.0-ubuntu-root",
         "sambyeol/ocaml-devcontainer:5-ubuntu-root",
         "sambyeol/ocaml-devcontainer:ubuntu-root",
+    ]
+}
+
+target "5_0_0_alpine" {
+    inherits = ["5_0_0", "alpine", "cross_platform"]
+    tags =[
+        "sambyeol/ocaml-devcontainer:5.0.0-alpine",
+        "sambyeol/ocaml-devcontainer:5.0-alpine",
+        "sambyeol/ocaml-devcontainer:5-alpine",
+        "sambyeol/ocaml-devcontainer:alpine",
+    ]
+}
+
+target "5_0_0_alpine_root" {
+    inherits = ["5_0_0", "alpine", "root", "cross_platform"]
+    tags = [
+        "sambyeol/ocaml-devcontainer:5.0.0-alpine-root",
+        "sambyeol/ocaml-devcontainer:5.0-alpine-root",
+        "sambyeol/ocaml-devcontainer:5-alpine-root",
+        "sambyeol/ocaml-devcontainer:alpine-root",
     ]
 }
 
