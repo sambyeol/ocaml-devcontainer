@@ -37,5 +37,4 @@ RUN opam init --disable-sandbox --yes --compiler=${OCAML_VERSION} && echo "eval 
 RUN opam install --yes \
         dune \
         ocaml-lsp-server \
-        ocamlformat \
-        ocamlformat-rpc
+        ocamlformat
