@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+LABEL org.opencontainers.image.source=https://github.com/sambyeol/ocaml-devcontainer
+
 USER root
 
 RUN apt-get update \
