@@ -6,7 +6,7 @@ You can find the images in `ghcr.io/sambyeol/ocaml-devcontainer`.
 Make a devcontainer setting file at `.devcontainer/devcontainer.json` in your project.
 ```json
 {
-    "image": "sambyeol/ocaml-devcontainer",
+    "image": "ghcr.io/sambyeol/ocaml-devcontainer",
     "customizations": {
         "vscode": {
             "extensions": [
