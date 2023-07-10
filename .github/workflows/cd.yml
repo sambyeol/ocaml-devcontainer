@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: latest
-        run: echo ::set-output target=TAG::latest
+        run: echo target=latest >> ${GITHUB_OUTPUT}
       - id: supported
-        run: echo ::set-output target=TAG::supported
+        run: echo target=supported >> ${GITHUB_OUTPUT}
     outputs:
       targets: ${{ toJSON(steps.*.outputs.target) }}
 
