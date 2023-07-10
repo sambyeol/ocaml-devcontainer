@@ -47,5 +47,5 @@ jobs:
       - uses: docker/bake-action@v3
         with:
           push: true
-          target: ${{ matrix.target }}
+          targets: ${{ matrix.target }}
     
