@@ -5,6 +5,7 @@ LABEL org.opencontainers.image.source=https://github.com/sambyeol/ocaml-devconta
 USER root
 
 RUN apk add \
+        bash \
         build-base \
         ca-certificates \
         curl \
