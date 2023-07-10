@@ -9,11 +9,28 @@ env:
   REGISTRY: ghcr.io
 
 jobs:
+  configure-build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: latest
+        run: echo ::set-output target=TAG::latest
+      - id: supported
+        run: echo ::set-output target=TAG::supported
+    outputs:
+      targets: ${{ toJSON(steps.*.outputs.target) }}
+
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+
+    needs:
+      - configure-build
+    
+    strategy:
+      matrix:
+        target: ${{ fromJson(needs.configure-build.outputs.targets) }}
 
     steps:
       - uses: actions/checkout@v3
@@ -30,4 +47,5 @@ jobs:
       - uses: docker/bake-action@v3
         with:
           push: true
+          target: ${{ matrix.target }}
     
