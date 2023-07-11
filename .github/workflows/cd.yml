@@ -12,12 +12,12 @@ jobs:
   configure-build:
     runs-on: ubuntu-latest
     steps:
-      - id: latest
-        run: echo target=latest >> ${GITHUB_OUTPUT}
-      - id: supported
-        run: echo target=supported >> ${GITHUB_OUTPUT}
+      - id: find-targets
+        run: |
+          targets=$(cat docker-bake.hcl | grep target | grep -e latest -e supported | grep -v -e version | sed 's/target "\(.*\)".*/"\1"/' | tr '\n' ',' | sed 's/,*$//')
+          echo "targets=[${targets}]" >> ${GITHUB_OUTPUT}
     outputs:
-      targets: ${{ toJSON(steps.*.outputs.target) }}
+      targets: ${{ steps.find-targets.outputs.targets }}
 
   build-and-deploy:
     runs-on: ubuntu-latest
