@@ -12,9 +12,12 @@ jobs:
   configure-build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - id: find-targets
         run: |
           targets=$(cat docker-bake.hcl | grep target | grep -e latest -e supported | grep -v -e version | sed 's/target "\(.*\)".*/"\1"/' | tr '\n' ',' | sed 's/,*$//')
+          echo "targets found:"
+          echo ${targets}
           echo "targets=[${targets}]" >> ${GITHUB_OUTPUT}
     outputs:
       targets: ${{ steps.find-targets.outputs.targets }}
