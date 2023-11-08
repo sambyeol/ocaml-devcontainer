@@ -1,7 +1,7 @@
 group "default" {
     targets = [
         "latest",
-        "support"
+        "supported"
     ]
 }
 
@@ -118,25 +118,25 @@ target "latest_alpine_root" {
 }
 
 
-group "support" {
+group "supported" {
     targets = [
-        "support_debian",
-        "support_debian_root",
-        "support_ubuntu",
-        "support_ubuntu_root",
-        "support_alpine",
-        "support_alpine_root"
+        "supported_debian",
+        "supported_debian_root",
+        "supported_ubuntu",
+        "supported_ubuntu_root",
+        "supported_alpine",
+        "supported_alpine_root"
     ]
 }
 
-target "support_version" {
+target "supported_version" {
     args = {
         OCAML_VERSION = "4.14.1"
     }
 }
 
-target "support_debian" {
-    inherits = ["support_version", "debian", "cross_platform"]
+target "supported_debian" {
+    inherits = ["supported_version", "debian", "cross_platform"]
     tags =[
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14.1-debian",
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14-debian",
@@ -148,8 +148,8 @@ target "support_debian" {
     ]
 }
 
-target "support_debian_root" {
-    inherits = ["support_version", "debian", "root", "cross_platform"]
+target "supported_debian_root" {
+    inherits = ["supported_version", "debian", "root", "cross_platform"]
     tags = [
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14.1-debian-root",
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14-debian-root",
@@ -161,8 +161,8 @@ target "support_debian_root" {
     ]
 }
 
-target "support_ubuntu" {
-    inherits = ["support_version", "ubuntu", "cross_platform"]
+target "supported_ubuntu" {
+    inherits = ["supported_version", "ubuntu", "cross_platform"]
     tags =[
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14.1-ubuntu",
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14-ubuntu",
@@ -170,8 +170,8 @@ target "support_ubuntu" {
     ]
 }
 
-target "support_ubuntu_root" {
-    inherits = ["support_version", "ubuntu", "root", "cross_platform"]
+target "supported_ubuntu_root" {
+    inherits = ["supported_version", "ubuntu", "root", "cross_platform"]
     tags = [
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14.1-ubuntu-root",
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14-ubuntu-root",
@@ -179,8 +179,8 @@ target "support_ubuntu_root" {
     ]
 }
 
-target "support_alpine" {
-    inherits = ["support_version", "alpine", "cross_platform"]
+target "supported_alpine" {
+    inherits = ["supported_version", "alpine", "cross_platform"]
     tags =[
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14.1-alpine",
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14-alpine",
@@ -188,8 +188,8 @@ target "support_alpine" {
     ]
 }
 
-target "support_alpine_root" {
-    inherits = ["support_version", "alpine", "root", "cross_platform"]
+target "supported_alpine_root" {
+    inherits = ["supported_version", "alpine", "root", "cross_platform"]
     tags = [
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14.1-alpine-root",
         "ghcr.io/sambyeol/ocaml-devcontainer:4.14-alpine-root",
