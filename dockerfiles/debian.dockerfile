@@ -34,7 +34,12 @@ RUN /tmp/script-library/debian-create-user.sh ${USERNAME} \
 
 USER ${USERNAME}
 ARG OCAML_VERSION=
-RUN opam init --disable-sandbox --yes --compiler=${OCAML_VERSION} && echo "eval \$(opam config env)" >> ~/.zshrc
+RUN opam init --disable-sandbox --yes --compiler=${OCAML_VERSION}
+ENV OPAM_SWITCH_PREFIX="${HOME}/.opam/${OCAML_VERSION}"
+ENV CAML_LD_LIBRARY_PATH="${OPAM_SWITCH_PREFIX}/lib/stublibs:${OPAM_SWITCH_PREFIX}/lib/ocaml/stublibs:${OPAM_SWITCH_PREFIX}/lib/ocaml"
+ENV OCAML_TOPLEVEL_PATH="${OPAM_SWITCH_PREFIX}/lib/toplevel"
+ENV MANPATH="${MANPATH}:${OPAM_SWITCH_PREFIX}/man"
+ENV PATH="${OPAM_SWITCH_PREFIX}/bin:${PATH}"
 
 RUN opam install --yes \
         dune \
