@@ -15,6 +15,7 @@ target "cross_platform" {
 target "root" {
     args = {
         USERNAME = "root"
+        HOMEDIR = ""
     }
 }
 

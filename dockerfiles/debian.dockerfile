@@ -26,6 +26,7 @@ RUN export FORMAT=$(echo ${LOCALE} | cut -f2 -d.) \
 ENV LC_ALL ${LOCALE}
 
 ARG USERNAME=sambyeol
+ARG HOMEDIR=/home
 ARG USE_OMZ=true
 COPY script-library/debian-*.sh /tmp/script-library/
 RUN /tmp/script-library/debian-create-user.sh ${USERNAME} \
@@ -35,8 +36,7 @@ RUN /tmp/script-library/debian-create-user.sh ${USERNAME} \
 USER ${USERNAME}
 ARG OCAML_VERSION=
 RUN opam init --disable-sandbox --yes --compiler=${OCAML_VERSION}
-ARG _HOMEDIR=${USERNAME#root}
-ENV OPAM_SWITCH_PREFIX="${_HOMEDIR:+/home}/${USERNAME}/.opam/${OCAML_VERSION}"
+ENV OPAM_SWITCH_PREFIX="${HOMEDIR}/${USERNAME}/.opam/${OCAML_VERSION}"
 ENV CAML_LD_LIBRARY_PATH="${OPAM_SWITCH_PREFIX}/lib/stublibs:${OPAM_SWITCH_PREFIX}/lib/ocaml/stublibs:${OPAM_SWITCH_PREFIX}/lib/ocaml"
 ENV OCAML_TOPLEVEL_PATH="${OPAM_SWITCH_PREFIX}/lib/toplevel"
 ENV MANPATH="${MANPATH}:${OPAM_SWITCH_PREFIX}/man"
