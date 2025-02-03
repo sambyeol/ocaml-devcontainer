@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:bookworm
 
 LABEL org.opencontainers.image.source=https://github.com/sambyeol/ocaml-devcontainer
 

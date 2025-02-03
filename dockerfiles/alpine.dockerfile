@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.21
 
 LABEL org.opencontainers.image.source=https://github.com/sambyeol/ocaml-devcontainer
 
