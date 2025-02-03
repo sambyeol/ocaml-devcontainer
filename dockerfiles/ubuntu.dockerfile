@@ -1,4 +1,4 @@
-FROM ubuntu:nobel
+FROM ubuntu:noble
 
 LABEL org.opencontainers.image.source=https://github.com/sambyeol/ocaml-devcontainer
 
