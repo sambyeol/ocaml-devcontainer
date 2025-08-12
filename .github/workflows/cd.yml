@@ -20,7 +20,7 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: docker/bake-action/subaction/list-targets@v6
         id: find-targets
         with:
@@ -43,7 +43,7 @@ jobs:
         target: ${{ fromJson(needs.configure-build.outputs.targets) }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: docker/setup-qemu-action@v3
         with:
