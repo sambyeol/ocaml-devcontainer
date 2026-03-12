@@ -1,4 +1,4 @@
-FROM debian:forky
+FROM debian:trixie
 
 LABEL org.opencontainers.image.source=https://github.com/sambyeol/ocaml-devcontainer
 
@@ -22,10 +22,10 @@ ARG LOCALE=en_US.UTF-8
 RUN export FORMAT=$(echo ${LOCALE} | cut -f2 -d.) \
     && export INPUT=$(echo ${LOCALE} | cut -f1 -d.) \
     && localedef -f ${FORMAT} -i ${INPUT} ${LOCALE}
-ENV LC_ALL ${LOCALE}
+ENV LC_ALL=${LOCALE}
 
 ARG USERNAME=sambyeol
-RUN adduser -G sudo -m -d /home/${USERNAME} -k /etc/skel ${USERNAME} \
+RUN useradd -G sudo -m -d /home/${USERNAME} -k /etc/skel ${USERNAME} \
     && sed -i -e 's/%sudo.*/%sudo\tALL=(ALL:ALL)\tNOPASSWD:ALL/g' /etc/sudoers \
     && su ${USERNAME} -s /bin/sh -c "touch /home/${USERNAME}/.sudo_as_admin_successful"
 

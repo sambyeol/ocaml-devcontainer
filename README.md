@@ -18,14 +18,6 @@ Make a devcontainer setting file at `.devcontainer/devcontainer.json` in your pr
 ```
 Then, reopen in container.
 
-## Tags
-Tags are named by `<version>-<distribution>[-root]`.
-* Images are tagged with its OCaml version. For example, `latest` tags mean that the image is created with the latest version of OCaml.
-* There are various base OS distributions. available distributions are as follows:
-  * `debian`: latest Debian (default)
-  * `ubuntu`: latest Ubuntu LTS
-* `-root` images come without non-root user `sambyeol`.
-
 ## Cross-compile Images
 All images are cross-compiled with `docker-buildx`.
 ### Requirements
