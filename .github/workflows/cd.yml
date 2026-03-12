@@ -5,42 +5,23 @@ on:
     branches:
       - main
     paths-ignore:
-      - '.devcontainer/**'
-      - '.github/**'
       - 'README.md'
       - 'LICENSE'
+
+concurrency:
+  group: "package"
+  cancel-in-progress: false
 
 env:
   REGISTRY: ghcr.io
 
 jobs:
-  configure-build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-
-    steps:
-      - uses: actions/checkout@v6
-      - uses: docker/bake-action/subaction/list-targets@v7
-        id: find-targets
-        with:
-          target: default
-
-    outputs:
-      targets: ${{ steps.find-targets.outputs.targets }}
-
   build-and-deploy:
     runs-on: ubuntu-latest
+    
     permissions:
       contents: read
       packages: write
-
-    needs:
-      - configure-build
-    
-    strategy:
-      matrix:
-        target: ${{ fromJson(needs.configure-build.outputs.targets) }}
 
     steps:
       - uses: actions/checkout@v6
@@ -60,5 +41,5 @@ jobs:
         with:
           files: docker-bake.hcl
           push: true
-          targets: ${{ matrix.target }}
+          targets: latest
     
