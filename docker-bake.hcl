@@ -11,7 +11,7 @@ target "cross_platform" {
     ]
 }
 
-group "latest" {
+target "latest" {
     inherits = ["cross_platform"]
     dockerfile = "./Dockerfile"
     args = {
