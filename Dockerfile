@@ -13,10 +13,10 @@ RUN apt-get update \
         gpg \
         locales \
         m4 \
-        opam \
         ssh-client \
         sudo \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/list/*
+RUN bash -c "sh <(curl -fsSL https://opam.ocaml.org/install.sh)"
 
 ARG LOCALE=en_US.UTF-8
 RUN export FORMAT=$(echo ${LOCALE} | cut -f2 -d.) \
