@@ -22,7 +22,7 @@ ARG LOCALE=en_US.UTF-8
 RUN export FORMAT=$(echo ${LOCALE} | cut -f2 -d.) \
     && export INPUT=$(echo ${LOCALE} | cut -f1 -d.) \
     && localedef -f ${FORMAT} -i ${INPUT} ${LOCALE}
-ENV LC_ALL ${LOCALE}
+ENV LC_ALL=${LOCALE}
 
 ARG USERNAME=sambyeol
 RUN useradd -G sudo -m -d /home/${USERNAME} -k /etc/skel ${USERNAME} \
