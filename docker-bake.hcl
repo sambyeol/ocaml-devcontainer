@@ -15,10 +15,10 @@ target "latest" {
     inherits = ["cross_platform"]
     dockerfile = "./Dockerfile"
     args = {
-        OCAML_VERSION = "5.4.0"
+        OCAML_VERSION = "5.4.1"
     }
     tags = [
-        "ghcr.io/sambyeol/ocaml-devcontainer:5.4.0",
+        "ghcr.io/sambyeol/ocaml-devcontainer:5.4.1",
         "ghcr.io/sambyeol/ocaml-devcontainer:5.4",
         "ghcr.io/sambyeol/ocaml-devcontainer:5",
         "ghcr.io/sambyeol/ocaml-devcontainer:latest",
